@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контент-Завод: Панель Управління Kairos</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #16a085;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --border-color: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            padding: 30px 15px;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        header h1 { color: var(--primary-color); font-size: 24pt; margin-bottom: 10px; }
+        header p { color: #64748b; font-size: 11pt; }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-title {
+            font-size: 14pt;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .form-group { margin-bottom: 15px; }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 10pt;
+            color: #475569;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            font-size: 10pt;
+            color: var(--text-color);
+        }
+
+        textarea { resize: vertical; height: 80px; }
+
+        .dynamic-list-item {
+            display: table;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        .dynamic-list-item-cell { display: table-cell; vertical-align: middle; }
+        .dynamic-list-item-cell:first-child { width: 85%; padding-right: 10px; }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 10pt;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn:hover { background-color: #1e293b; }
+        .btn-accent { background-color: var(--accent-color); }
+        .btn-accent:hover { background-color: #117a65; }
+        .btn-danger { background-color: #ef4444; }
+        .btn-danger:hover { background-color: #dc2626; }
+        .btn-full { width: 100%; padding: 14px; font-size: 12pt; }
+
+        .tab-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 15px;
+        }
+
+        .output-template {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .output-template:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+        .template-header { font-weight: bold; font-size: 12pt; color: var(--accent-color); margin-bottom: 8px; }
+        .template-body {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #e2e8f0;
+            white-space: pre-wrap;
+            font-size: 10pt;
+        }
+
+        .status-message { margin-top: 15px; font-style: italic; color: var(--accent-color); font-weight: 600; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🏭 Контент-Завод: Панель Управління</h1>
+        <p>Професійне середовище бренду content-engine.online для вашої команди</p>
+    </header>
+
+    <div class="card">
+        <div class="card-title">🏢 Закладка Компанії (Контекст-Анкета)</div>
+        
+        <div class="form-group">
+            <label for="companyName">Назва компанії / Проекту:</label>
+            <input type="text" id="companyName" placeholder="Введіть назву компанії">
+        </div>
+
+        <div class="form-group">
+            <label for="projectDna">ДНК Компанії (Цінності, місія, жорсткі обмеження):</label>
+            <textarea id="projectDna" placeholder="Наприклад: Працюємо в преміум-сегменті..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="toneOfVoice">Tone of Voice (Стиль автора / Бренд-голос):</label>
+            <textarea id="toneOfVoice" placeholder="Експертний, але простий стиль. Звертання на 'Ви'..."></textarea>
+        </div>
+
+        <div class="form-group" style="margin-top: 20px;">
+            <label>💼 Продукти та Послуги (Матриця Офферів):</label>
+            <div id="servicesContainer">
+                <div class="dynamic-list-item">
+                    <div class="dynamic-list-item-cell">
+                        <input type="text" class="service-item" placeholder="Послуга 1: Назва, ціна, головна цінність для клієнта">
+                    </div>
+                    <div class="dynamic-list-item-cell">
+                        <button class="btn btn-danger" onclick="this.closest('.dynamic-list-item').remove()">Видалити</button>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-accent" style="margin-top: 10px;" onclick="addServiceField()">+ Додати нову послугу</button>
+        </div>
+
+        <div class="form-group" style="margin-top: 20px;">
+            <label>🎯 Портрети Клієнтів та Сегменти Аудиторії:</label>
+            <div id="clientsContainer">
+                <div class="dynamic-list-item">
+                    <div class="dynamic-list-item-cell">
+                        <input type="text" class="client-item" placeholder="Сегмент 1: Хто вони, які головні болі, що шукають">
+                    </div>
+                    <div class="dynamic-list-item-cell">
+                        <button class="btn btn-danger" onclick="this.closest('.dynamic-list-item').remove()">Видалити</button>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-accent" style="margin-top: 10px;" onclick="addClientField()">+ Додати портрет клієнта</button>
+        </div>
+
+        <div style="margin-top: 25px;">
+            <button class="btn" style="background-color: #2563eb;" onclick="saveCompanyContext()">Зберегти профіль компанії у пам'ять 💾</button>
+            <span id="saveStatus" style="margin-left: 15px; font-weight: 600; color: #16a085;"></span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">🚀 Запуск Контент-Генератора</div>
+        <div class="form-group">
+            <label for="fuelInput">Вхідне «Паливо» (Інфопривід, ідея, новина або тези виступу):</label>
+            <textarea id="fuelInput" style="height: 140px;" placeholder="Введіть сиру ідею або інфопривід..."></textarea>
+        </div>
+        <button class="btn btn-full" onclick="generateAllTemplates()">Запустити Контент-Завод (Генерація 5 шаблонів) ⚡</button>
+        <div class="status-message" id="processStatus"></div>
+    </div>
+
+    <div class="tabs">
+        <div class="card-title">✨ Вихідна продукція заводу (5 готових шаблонів)</div>
+        <div class="tab-content">
+            <div class="output-template">
+                <div class="template-header">1. Пост для Соціальних мереж (Facebook / Instagram)</div>
+                <div class="template-body" id="outSocial">Тут з'явиться пост...</div>
+            </div>
+            <div class="output-template">
+                <div class="template-header">2. Короткий сценарій (Reels / Shorts / TikTok)</div>
+                <div class="template-body" id="outScript">Тут з'явиться сценарій...</div>
+            </div>
+            <div class="output-template">
+                <div class="template-header">3. Клієнтська Email-розсилка</div>
+                <div class="template-body" id="outEmail">Тут з'явиться текст листа...</div>
+            </div>
+            <div class="output-template">
+                <div class="template-header">4. Експертна стаття в Блог / LinkedIn</div>
+                <div class="template-body" id="outArticle">Тут з'явиться стаття...</div>
+            </div>
+            <div class="output-template">
+                <div class="template-header">5. Скрипт для Менеджера з продажів</div>
+                <div class="template-body" id="outSales">Тут з'явиться скрипт...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function addServiceField() {
+        const container = document.getElementById('servicesContainer');
+        const div = document.createElement('div');
+        div.className = 'dynamic-list-item';
+        div.innerHTML = `
+            <div class="dynamic-list-item-cell"><input type="text" class="service-item" placeholder="Нова послуга: Назва, ціна, цінність"></div>
+            <div class="dynamic-list-item-cell"><button class="btn btn-danger" onclick="this.closest('.dynamic-list-item').remove()">Видалити</button></div>
+        `;
+        container.appendChild(div);
+    }
+
+    function addClientField() {
+        const container = document.getElementById('clientsContainer');
+        const div = document.createElement('div');
+        div.className = 'dynamic-list-item';
+        div.innerHTML = `
+            <div class="dynamic-list-item-cell"><input type="text" class="client-item" placeholder="Новий сегмент: Хто вони, болі, запити"></div>
+            <div class="dynamic-list-item-cell"><button class="btn btn-danger" onclick="this.closest('.dynamic-list-item').remove()">Видалити</button></div>
+        `;
+        container.appendChild(div);
+    }
+
+    function saveCompanyContext() {
+        const companyData = {
+            name: document.getElementById('companyName').value,
+            dna: document.getElementById('projectDna').value,
+            tov: document.getElementById('toneOfVoice').value,
+            services: Array.from(document.querySelectorAll('.service-item')).map(input => input.value).filter(v => v),
+            clients: Array.from(document.querySelectorAll('.client-item')).map(input => input.value).filter(v => v)
+        };
+        localStorage.setItem('content_factory_context', JSON.stringify(companyData));
+        const status = document.getElementById('saveStatus');
+        status.innerText = "Контекст успішно збережено для команди! ✅";
+        setTimeout(() => status.innerText = "", 4000);
+    }
+
+    window.onload = function() {
+        const saved = localStorage.getItem('content_factory_context');
+        if (saved) {
+            const data = JSON.parse(saved);
+            document.getElementById('companyName').value = data.name || '';
+            document.getElementById('projectDna').value = data.dna || '';
+            document.getElementById('toneOfVoice').value = data.tov || '';
+            
+            if(data.services && data.services.length > 0) {
+                const container = document.getElementById('servicesContainer');
+                container.innerHTML = '';
+                data.services.forEach(service => {
+                    const div = document.createElement('div');
+                    div.className = 'dynamic-list-item';
+                    div.innerHTML = `
+                        <div class="dynamic-list-item-cell"><input type="text" class="service-item" value="${service}"></div>
+                        <div class="dynamic-list-item-cell"><button class="btn btn-danger" onclick="this.closest('.dynamic-list-item').remove()">Видалити</button></div>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            if(data.clients && data.clients.length > 0) {
+                const container = document.getElementById('clientsContainer');
+                container.innerHTML = '';
+                data.clients.forEach(client => {
+                    const div = document.createElement('div');
+                    div.className = 'dynamic-list-item';
+                    div.innerHTML = `
+                        <div class="dynamic-list-item-cell"><input type="text" class="client-item" value="${client}"></div>
+                        <div class="dynamic-list-item-cell"><button class="btn btn-danger" onclick="this.closest('.dynamic-list-item').remove()">Видалити</button></div>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+        }
+    }
+
+    async function generateAllTemplates() {
+        const fuel = document.getElementById('fuelInput').value;
+        if (!fuel) { alert('Будь ласка, додайте вхідне паливо для генерації!'); return; }
+
+        const dna = document.getElementById('projectDna').value;
+        const tov = document.getElementById('toneOfVoice').value;
+        const services = Array.from(document.querySelectorAll('.service-item')).map(input => input.value).join('; ');
+        const clients = Array.from(document.querySelectorAll('.client-item')).map(input => input.value).join('; ');
+
+        const processStatus = document.getElementById('processStatus');
+        processStatus.innerText = "⚡ Завод запущено через api.content-engine.online... Очікуйте 15-25 секунд.";
+
+        const tasks = [
+            { id: 'outSocial', format: 'Пост для Соціальних мереж (експертний, структурований, з закликом)' },
+            { id: 'outScript', format: 'Короткий динамічний сценарій для Reels/Shorts (з Хуком, Тілом та Оффером)' },
+            { id: 'outEmail', format: 'Клієнтська Email-розсилка (з інтригуючою темою листа та чітким Call to Action)' },
+            { id: 'outArticle', format: 'Глибока стаття для Блогу або LinkedIn (з підзаголовками, аналітикою та висновками)' },
+            { id: 'outSales', format: 'Скрипт / Шпаргалка для менеджера з продажів (як інтегрувати цю новину в розмову та закрити заперечення)' }
+        ];
+
+        tasks.forEach(t => document.getElementById(t.id).innerText = "Кується контент...⏳");
+
+        const promises = tasks.map(async (task) => {
+            try {
+                // Тепер запит летить на ТВІЙ власний домен!
+                const response = await fetch('https://api.content-engine.online/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        format: task.format,
+                        dna: dna,
+                        tov: tov,
+                        services: services,
+                        clients: clients,
+                        fuel: fuel
+                    })
+                });
+                
+                // Тимчасова заглушка до завершення оновлення DNS сервера
+                if (response.status === 404 || response.status === 502) {
+                     throw new Error("DNS ще оновлюється");
+                }
+                
+                const data = await response.json();
+                document.getElementById(task.id).innerText = data.text || "Помилка форматування відповіді.";
+            } catch (err) {
+                // Якщо твій домен ще не встиг оновитися в мережі — програма автоматично підстрахує і виконає запит через пряму адресу Render
+                try {
+                    const backupResponse = await fetch('https://kairos-forge-backend.onrender.com/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            format: task.format,
+                            dna: dna,
+                            tov: tov,
+                            services: services,
+                            clients: clients,
+                            fuel: fuel
+                        })
+                    });
+                    const backupData = await backupResponse.json();
+                    document.getElementById(task.id).innerText = backupData.text;
+                } catch(backupErr) {
+                    document.getElementById(task.id).innerText = "Помилка генерації. Зачекайте 5 хвилин, поки оновлюється домен.";
+                }
+            }
+        });
+
+        await Promise.all(promises);
+        processStatus.innerText = "✅ Всі 5 шаблонів успішно відвантажено з вашої платформи!";
+    }
+</script>
+</body>
+</html>
