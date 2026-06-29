@@ -12,11 +12,11 @@
             --bg-input: #FAFBFC;
             --text-main: #0D47A1;
             --text-dark: #1E293B;
-            --text-muted: #64748B;
+            --text-muted: #1E293B; /* Змінено з сірого на чіткий темний */
             --accent-blue: #0277BD;
             --accent-royal: #1565C0;
             --accent-video: #7C3AED;
-            --border-color: #E2E8F0;
+            --border-color: #CBD5E1; /* Трохи темніші бордери для чіткості */
             --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
@@ -78,11 +78,11 @@
             align-items: center;
             gap: 14px;
             padding: 14px 18px;
-            color: var(--text-muted);
+            color: #475569;
             text-decoration: none;
             border-radius: 12px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600; /* Зроблено жирнішим для читання */
             cursor: pointer;
             transition: all 0.2s ease;
         }
@@ -93,7 +93,7 @@
         }
 
         .nav-item.active {
-            font-weight: 600;
+            font-weight: 700;
             background-color: rgba(21, 101, 192, 0.08);
             color: var(--accent-royal);
         }
@@ -102,7 +102,7 @@
             width: 20px;
             height: 20px;
             stroke: currentColor;
-            stroke-width: 1.6;
+            stroke-width: 1.8;
             fill: none;
         }
 
@@ -133,8 +133,9 @@
         }
 
         .header-title p {
-            color: var(--text-muted);
+            color: #000000; /* Чорний колір підзаголовку */
             font-size: 14px;
+            font-weight: 500;
         }
 
         .status-badge {
@@ -142,12 +143,12 @@
             align-items: center;
             gap: 8px;
             background: rgba(16, 185, 129, 0.08);
-            color: #10B981;
+            color: #047857; /* Темніший зелений */
             padding: 8px 16px;
             border-radius: 12px;
             font-size: 13px;
-            font-weight: 600;
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            font-weight: 700;
+            border: 1px solid rgba(16, 185, 129, 0.3);
         }
 
         .status-dot {
@@ -212,7 +213,7 @@
             width: 22px;
             height: 22px;
             stroke: var(--accent-blue);
-            stroke-width: 1.8;
+            stroke-width: 2;
             fill: none;
         }
 
@@ -223,9 +224,9 @@
 
         .form-label {
             display: block;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 700; /* Чорні жирні заголовки полів */
+            color: #000000;
             margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -236,11 +237,16 @@
             background-color: var(--bg-input);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            color: var(--text-dark);
+            color: #000000; /* Чорний текст при введенні */
             padding: 16px 20px;
             font-size: 14px;
+            font-weight: 500;
             outline: none;
             transition: all 0.2s ease;
+        }
+
+        .input-field::placeholder, .textarea-field::placeholder {
+            color: #64748B; /* Чіткіший колір підказок */
         }
 
         .input-field:focus, .textarea-field:focus {
@@ -301,13 +307,14 @@
         .btn-secondary {
             background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
             border: 1px solid var(--border-color);
-            color: var(--text-dark);
+            color: #000000;
+            font-weight: 700;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 2px #FFFFFF;
         }
 
         .btn-secondary:hover {
             background: #F8FAFC;
-            border-color: var(--text-muted);
+            border-color: #000000;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
@@ -334,16 +341,20 @@
         .file-drop-zone svg {
             width: 28px;
             height: 28px;
-            stroke: var(--text-muted);
-            stroke-width: 1.6;
+            stroke: #475569;
+            stroke-width: 1.8;
             fill: none;
+        }
+
+        .file-drop-zone span {
+            color: #000000; /* Чорний текст у зоні завантаження */
         }
 
         .file-list {
             margin-top: 10px;
             font-size: 13px;
             color: var(--accent-royal);
-            font-weight: 600;
+            font-weight: 700;
         }
 
         /* Feed Badges Layout */
@@ -358,14 +369,15 @@
         .trend-title {
             font-size: 14px;
             font-weight: 700;
-            color: var(--text-dark);
+            color: #000000; /* Чорна назва тренду */
             margin-bottom: 6px;
         }
 
         .trend-desc {
             font-size: 13px;
-            color: var(--text-muted);
+            color: #1E293B; /* Контрастний опис тренду */
             line-height: 1.5;
+            font-weight: 500;
         }
 
         /* Generation Feed Area */
@@ -409,26 +421,27 @@
         .copy-btn {
             background: none;
             border: none;
-            color: var(--text-muted);
+            color: #475569;
             cursor: pointer;
             padding: 6px;
         }
 
-        .copy-btn:hover { color: var(--text-dark); }
+        .copy-btn:hover { color: #000000; }
 
         .copy-btn svg {
             width: 18px;
             height: 18px;
             stroke: currentColor;
-            stroke-width: 1.6;
+            stroke-width: 1.8;
             fill: none;
         }
 
         .output-body {
             font-size: 14px;
-            color: var(--text-dark);
+            color: #000000; /* Чорний згенерований текст */
             line-height: 1.6;
             white-space: pre-line;
+            font-weight: 500;
         }
 
         .video-placeholder {
@@ -442,14 +455,15 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            color: var(--text-muted);
+            color: #000000;
+            font-weight: 600;
         }
 
         .video-placeholder svg {
             width: 36px;
             height: 36px;
-            stroke: var(--text-muted);
-            stroke-width: 1.5;
+            stroke: #000000;
+            stroke-width: 1.6;
             fill: none;
         }
     </style>
@@ -595,8 +609,8 @@
                     <label class="form-label">Вам потрібно завантажити файли з профілями клієнтів або послуг чи товарів</label>
                     <div class="file-drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
                         <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                        <span style="font-size: 14px; font-weight: 600; color: var(--text-dark);">Перетягніть корпоративні профілі клієнтів або описи послуг сюди</span>
-                        <span style="font-size: 12px; color: var(--text-muted);">Підтримуються аналітичні документи PDF, DOCX, XLSX до 25 МБ</span>
+                        <span style="font-size: 14px; font-weight: 700;">Перетягніть корпоративні профілі клієнтів або описи послуг сюди</span>
+                        <span style="font-size: 12px; color: #475569; font-weight: 500; margin-top: 4px;">Підтримуються аналітичні документи PDF, DOCX, XLSX до 25 МБ</span>
                         <div id="file-name-display" class="file-list"></div>
                         <input type="file" id="file-input" style="display: none;" onchange="handleFileSelect(this.files)">
                     </div>
@@ -628,7 +642,7 @@
     </div>
 
     <script>
-        let BACKEND_URL = "https://content-engine-online.onrender.com"; // Сюди підставимо твою адресу сервера
+        let BACKEND_URL = "https://content-engine-online.onrender.com"; 
         let selectedFile = null;
 
         function switchTab(tabId, element) {
@@ -640,7 +654,6 @@
             element.classList.add('active');
         }
 
-        // Drag & Drop File handler
         const dropZone = document.getElementById('drop-zone');
         ['dragenter', 'dragover'].forEach(eventName => {
             dropZone.addEventListener(eventName, (e) => { e.preventDefault(); dropZone.classList.add('dragover'); }, false);
@@ -659,7 +672,6 @@
             }
         }
 
-        // Sending Files & Inputs to Backend Database Storage
         async function saveProfiles() {
             let audience = document.getElementById('audience-context').value;
             let services = document.getElementById('services-context').value;
@@ -686,15 +698,14 @@
                 if(response.ok) {
                     alert("Профілі та файли успішно збережено в систему!");
                 } else {
-                    alert("Профілі зафіксовано локально. Очікується запуск серверного коду.");
+                    alert("Профілі зафіксовано локально. Переходимо до створення коду сервера на Render.");
                 }
             } catch (err) {
-                alert("Тексти зафіксовано. Переходимо до створення коду сервера на Render.");
+                alert("Дані зафіксовано. Починаємо налаштування бекенду.");
             }
             document.getElementById('status-text').innerText = "Розумний ШІ-конвеєр готовий";
         }
 
-        // Triggering Core Multi-AI Pipeline Execution
         async function triggerGeneration(type) {
             let idea = document.getElementById('current-idea').value;
             let url1 = document.getElementById('source-url-1')?.value || "";
@@ -707,7 +718,7 @@
             try {
                 let response = await fetch(`${BACKEND_URL}/api/generate`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/center' },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ idea, urls: [url1, url2], type })
                 });
                 let data = await response.json();
@@ -715,11 +726,11 @@
                 if(data.facebook) document.getElementById('fb-output').innerText = data.facebook;
                 if(data.linkedin) document.getElementById('li-output').innerText = data.linkedin;
                 if(type === 'video') {
-                    document.getElementById('video-box-content').innerHTML = `<p style='color:var(--accent-video); font-weight:600;'>✓ Відео успішно згенеровано в HeyGen за вашим скриптом!</p>`;
+                    document.getElementById('video-box-content').innerHTML = `<p style='color:var(--accent-video); font-weight:700;'>✓ Відео успішно згенеровано в HeyGen за вашим скриптом!</p>`;
                 }
             } catch (err) {
-                document.getElementById('fb-output').innerText = "Фронтенд повністю готовий надсилати дані. Давайте напишемо для нього код сервера Node.js!";
-                document.getElementById('li-output').innerText = "Чекаю вашої команди для збірки бекенду.";
+                document.getElementById('fb-output').innerText = "Інтерфейс повністю готовий до роботи. Залишилося запустити бекенд-сервер Node.js!";
+                document.getElementById('li-output').innerText = "Чекаю вашої команди для збірки логіки.";
             }
             document.getElementById('status-text').innerText = "Розумний ШІ-конвеєр готовий";
         }
