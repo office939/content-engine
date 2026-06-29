@@ -12,11 +12,11 @@
             --bg-input: #FAFBFC;
             --text-main: #0D47A1;
             --text-dark: #1E293B;
-            --text-muted: #1E293B; /* Змінено з сірого на чіткий темний */
+            --text-muted: #1E293B;
             --accent-blue: #0277BD;
             --accent-royal: #1565C0;
             --accent-video: #7C3AED;
-            --border-color: #CBD5E1; /* Трохи темніші бордери для чіткості */
+            --border-color: #CBD5E1;
             --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
@@ -36,7 +36,6 @@
             overflow: hidden;
         }
 
-        /* Sidebar Layout */
         .sidebar {
             width: 280px;
             background-color: var(--bg-sidebar);
@@ -82,7 +81,7 @@
             text-decoration: none;
             border-radius: 12px;
             font-size: 14px;
-            font-weight: 600; /* Зроблено жирнішим для читання */
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
         }
@@ -106,7 +105,6 @@
             fill: none;
         }
 
-        /* Workspace Viewport */
         .dashboard-container {
             flex: 1;
             display: flex;
@@ -133,7 +131,7 @@
         }
 
         .header-title p {
-            color: #000000; /* Чорний колір підзаголовку */
+            color: #000000;
             font-size: 14px;
             font-weight: 500;
         }
@@ -143,7 +141,7 @@
             align-items: center;
             gap: 8px;
             background: rgba(16, 185, 129, 0.08);
-            color: #047857; /* Темніший зелений */
+            color: #047857;
             padding: 8px 16px;
             border-radius: 12px;
             font-size: 13px;
@@ -158,7 +156,6 @@
             border-radius: 50%;
         }
 
-        /* Tabs Switching System */
         .tab-content {
             display: none;
             padding: 48px;
@@ -188,7 +185,6 @@
             gap: 40px;
         }
 
-        /* Cards Layout */
         .card {
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -217,7 +213,6 @@
             fill: none;
         }
 
-        /* Interactive Elements */
         .form-group {
             margin-bottom: 24px;
         }
@@ -225,7 +220,7 @@
         .form-label {
             display: block;
             font-size: 13px;
-            font-weight: 700; /* Чорні жирні заголовки полів */
+            font-weight: 700;
             color: #000000;
             margin-bottom: 10px;
             text-transform: uppercase;
@@ -237,7 +232,7 @@
             background-color: var(--bg-input);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            color: #000000; /* Чорний текст при введенні */
+            color: #000000;
             padding: 16px 20px;
             font-size: 14px;
             font-weight: 500;
@@ -246,7 +241,7 @@
         }
 
         .input-field::placeholder, .textarea-field::placeholder {
-            color: #64748B; /* Чіткіший колір підказок */
+            color: #64748B;
         }
 
         .input-field:focus, .textarea-field:focus {
@@ -260,7 +255,6 @@
             resize: none;
         }
 
-        /* 3D Premium Action Buttons */
         .actions-wrapper {
             display: flex;
             justify-content: flex-end;
@@ -318,7 +312,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
-        /* Upload Container Component */
         .file-drop-zone {
             border: 2px dashed var(--border-color);
             background-color: var(--bg-input);
@@ -347,7 +340,7 @@
         }
 
         .file-drop-zone span {
-            color: #000000; /* Чорний текст у зоні завантаження */
+            color: #000000;
         }
 
         .file-list {
@@ -357,7 +350,6 @@
             font-weight: 700;
         }
 
-        /* Feed Badges Layout */
         .trend-box {
             background-color: var(--bg-input);
             border-left: 4px solid var(--accent-royal);
@@ -369,18 +361,17 @@
         .trend-title {
             font-size: 14px;
             font-weight: 700;
-            color: #000000; /* Чорна назва тренду */
+            color: #000000;
             margin-bottom: 6px;
         }
 
         .trend-desc {
             font-size: 13px;
-            color: #1E293B; /* Контрастний опис тренду */
+            color: #1E293B;
             line-height: 1.5;
             font-weight: 500;
         }
 
-        /* Generation Feed Area */
         .results-wrapper {
             display: flex;
             flex-direction: column;
@@ -438,7 +429,7 @@
 
         .output-body {
             font-size: 14px;
-            color: #000000; /* Чорний згенерований текст */
+            color: #000000;
             line-height: 1.6;
             white-space: pre-line;
             font-weight: 500;
@@ -551,195 +542,4 @@
                         <div class="output-box">
                             <div class="output-header">
                                 <span class="output-tag" style="color: var(--accent-blue); background-color: rgba(2, 119, 189, 0.08);">Стаття/Лонгрід для LinkedIn</span>
-                                <button class="copy-btn" onclick="copyText('li-output')"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
-                            </div>
-                            <div id="li-output" class="output-body">Глибока експертна аналітика у вашому унікальному авторському стилі сформується в цьому полі...</div>
-                        </div>
-                        <div class="output-box">
-                            <div class="output-header"><span class="output-tag tag-video">Готовий відеоконтент (Скрипт та Медіа для HeyGen)</span></div>
-                            <div id="video-box-content" class="video-placeholder">
-                                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                                <span>ШІ-Аватар автоматично згенерує відеоролик на основі цієї картки</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="side-column">
-                <div class="card">
-                    <div class="card-title">
-                        <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
-                        Тема дня та тренди інтересів
-                    </div>
-                    <div class="trend-box">
-                        <div class="trend-title">Тема тижня: Касові розриви бізнесу</div>
-                        <div class="trend-desc">Власники компаній активно реагують на кейси виходу з фінансового піке. Зробіть акцент на автоматизації звітності.</div>
-                    </div>
-                    <div class="trend-box">
-                        <div class="trend-title">Тема дня: Нові ліміти ФОП</div>
-                        <div class="trend-desc">Зафіксовано сплеск пошукових запитів бухгалтерської тематики. Сприятливий час для публікації інструкції.</div>
-                    </div>
-                    <button class="btn btn-secondary" style="width: 100%; margin-top: 12px;" onclick="alert('Метрики успішно оновлені за останні 24 години!')">Оновити метрики інтересів</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="profiles-tab" class="tab-content single-col">
-            <div class="card">
-                <div class="card-title">
-                    <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-                    Контекст цільової аудиторії клієнта
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Портрет, сегменти та болі аудиторії</label>
-                    <textarea id="audience-context" class="textarea-field" style="height: 110px;" placeholder="Вкажіть, хто є вашими клієнтами та які фінансово-управлінські болі вони закривають..."></textarea>
-                </div>
-
-                <div class="card-title" style="margin-top: 32px; border-top: 1px solid var(--border-color); padding-top: 24px;">
-                    <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                    Опис сервісів, послуг або товарів бренду
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Матриця ваших продуктів (оффери, умови, прайс)</label>
-                    <textarea id="services-context" class="textarea-field" style="height: 110px;" placeholder="Детально розпишіть ваші основні бізнес-послуги..."></textarea>
-                </div>
-
-                <div class="form-group" style="margin-bottom: 0; margin-top: 24px;">
-                    <label class="form-label">Вам потрібно завантажити файли з профілями клієнтів або послуг чи товарів</label>
-                    <div class="file-drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
-                        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                        <span style="font-size: 14px; font-weight: 700;">Перетягніть корпоративні профілі клієнтів або описи послуг сюди</span>
-                        <span style="font-size: 12px; color: #475569; font-weight: 500; margin-top: 4px;">Підтримуються аналітичні документи PDF, DOCX, XLSX до 25 МБ</span>
-                        <div id="file-name-display" class="file-list"></div>
-                        <input type="file" id="file-input" style="display: none;" onchange="handleFileSelect(this.files)">
-                    </div>
-                </div>
-            </div>
-            <div class="actions-wrapper">
-                <button class="btn" onclick="saveProfiles()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg> Зберегти профілі в базу</button>
-            </div>
-        </div>
-
-        <div id="sources-tab" class="tab-content single-col">
-            <div class="card">
-                <div class="card-title">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
-                    Зчитування зовнішніх оновлень за посиланнями
-                </div>
-                <div class="form-group" style="margin-bottom: 0;">
-                    <label class="form-label">Джерела для автоматичного моніторингу новин, пропозицій та законів (сайти, соцмережі)</label>
-                    <input type="text" id="source-url-1" class="input-field" style="margin-bottom: 12px;" placeholder="Вставте перше посилання (наприклад: https://news.dtkt.ua)"/>
-                    <input type="text" id="source-url-2" class="input-field" placeholder="Вставте додаткове посилання на соцмережу для зчитування трендів"/>
-                </div>
-            </div>
-            <div class="actions-wrapper">
-                <button class="btn btn-secondary" onclick="alert('Зв\'язок встановлено. Сайти відповідають коректно.')">Перевірити з'єднання з сайтами</button>
-                <button class="btn" onclick="alert('Моніторинг активовано. Оновлення перевірятимуться кожні 4 години.')">Підключити моніторинг оновлень</button>
-            </div>
-        </div>
-
-    </div>
-
-    <script>
-        let BACKEND_URL = "https://content-engine-online.onrender.com"; 
-        let selectedFile = null;
-
-        function switchTab(tabId, element) {
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(tab => tab.classList.remove('active'));
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => item.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            element.classList.add('active');
-        }
-
-        const dropZone = document.getElementById('drop-zone');
-        ['dragenter', 'dragover'].forEach(eventName => {
-            dropZone.addEventListener(eventName, (e) => { e.preventDefault(); dropZone.classList.add('dragover'); }, false);
-        });
-        ['dragleave', 'drop'].forEach(eventName => {
-            dropZone.addEventListener(eventName, (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); }, false);
-        });
-        dropZone.addEventListener('drop', (e) => {
-            handleFileSelect(e.dataTransfer.files);
-        });
-
-        function handleFileSelect(files) {
-            if(files.length > 0) {
-                selectedFile = files[0];
-                document.getElementById('file-name-display').innerText = "📎 Обрано файл: " + selectedFile.name;
-            }
-        }
-
-        async function saveProfiles() {
-            let audience = document.getElementById('audience-context').value;
-            let services = document.getElementById('services-context').value;
-
-            if (!audience && !services && !selectedFile) {
-                alert("Будь ласка, заповніть текстові поля або оберіть файл!");
-                return;
-            }
-
-            document.getElementById('status-text').innerText = "Зберігання в базу даних...";
-            
-            let formData = new FormData();
-            formData.append('audience', audience);
-            formData.append('services', services);
-            if (selectedFile) {
-                formData.append('file', selectedFile);
-            }
-
-            try {
-                let response = await fetch(`${BACKEND_URL}/api/save-profile`, {
-                    method: 'POST',
-                    body: formData
-                });
-                if(response.ok) {
-                    alert("Профілі та файли успішно збережено в систему!");
-                } else {
-                    alert("Профілі зафіксовано локально. Переходимо до створення коду сервера на Render.");
-                }
-            } catch (err) {
-                alert("Дані зафіксовано. Починаємо налаштування бекенду.");
-            }
-            document.getElementById('status-text').innerText = "Розумний ШІ-конвеєр готовий";
-        }
-
-        async function triggerGeneration(type) {
-            let idea = document.getElementById('current-idea').value;
-            let url1 = document.getElementById('source-url-1')?.value || "";
-            let url2 = document.getElementById('source-url-2')?.value || "";
-
-            document.getElementById('status-text').innerText = "Конвеєр ШІ запущено (Gemini -> GPT -> Perplexity)...";
-            document.getElementById('fb-output').innerText = "Очікуйте, Gemini збирає факти, GPT будує структуру...";
-            document.getElementById('li-output').innerText = "Perplexity шліфує ваш фірмовий експертний стиль...";
-
-            try {
-                let response = await fetch(`${BACKEND_URL}/api/generate`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ idea, urls: [url1, url2], type })
-                });
-                let data = await response.json();
-                
-                if(data.facebook) document.getElementById('fb-output').innerText = data.facebook;
-                if(data.linkedin) document.getElementById('li-output').innerText = data.linkedin;
-                if(type === 'video') {
-                    document.getElementById('video-box-content').innerHTML = `<p style='color:var(--accent-video); font-weight:700;'>✓ Відео успішно згенеровано в HeyGen за вашим скриптом!</p>`;
-                }
-            } catch (err) {
-                document.getElementById('fb-output').innerText = "Інтерфейс повністю готовий до роботи. Залишилося запустити бекенд-сервер Node.js!";
-                document.getElementById('li-output').innerText = "Чекаю вашої команди для збірки логіки.";
-            }
-            document.getElementById('status-text').innerText = "Розумний ШІ-конвеєр готовий";
-        }
-
-        function copyText(id) {
-            let text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text);
-            alert("Текст скопійовано в буфер обміну!");
-        }
-    </script>
-</body>
-</html>
+                                <button class="copy-btn" onclick="copyText('li-output')"><svg viewBox="0 0 24 24"><rect
